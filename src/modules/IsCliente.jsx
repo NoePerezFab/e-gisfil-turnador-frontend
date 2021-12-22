@@ -5,7 +5,7 @@ const IsCliente = ({setservicios}) => {
         const [red, setred] = useState(false)
         
         const getServicios = async(isCliente) =>{
-            const response = await fetch('http://localhost:8080/api/servicios?isCliente='+isCliente,{ 
+            const response = await fetch('http://192.168.200.216:8080/ticket/api/servicios?isCliente='+isCliente,{ 
                 method: 'GET',
                 mode: 'cors',
                 cache: 'default'

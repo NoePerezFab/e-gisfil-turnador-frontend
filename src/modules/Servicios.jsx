@@ -7,7 +7,7 @@ const Servicios = ({setticket,servicios}) => {
         const ticketrequest = {"servicio" : servicio}
         const servicioJson = JSON.stringify(ticketrequest)
         
-        const response = await fetch('http://localhost:8080/api/addticket',{ 
+        const response = await fetch('http://192.168.200.216:8080/ticket/api/addticket',{ 
                 headers : { 'Content-Type': 'application/json' },
                 method: 'POST',
                 mode: 'cors', // <---
