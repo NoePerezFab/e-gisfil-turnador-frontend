@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import {HashRouter as Router, Route, Routes } from "react-router-dom";
+import IsCliente from "./modules/IsCliente";
+import Menu from "./modules/Menu";
+import Servicios from "./modules/Servicios";
+import Ticket from "./modules/Ticket";
 
 function App() {
+  const [servicios, setservicios] = useState([])
+  const [ticket, setticket] = useState({})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Menu/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<IsCliente setservicios={setservicios}/>}/>
+        <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket}/>}/>
+        <Route path="/ticket" element={<Ticket ticket={ticket}/>} />
+      </Routes>
+    </Router>
+    </>
   );
 }
 
