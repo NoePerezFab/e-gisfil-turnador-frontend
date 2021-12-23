@@ -1,21 +1,23 @@
 import { useState } from "react";
 import {HashRouter as Router, Route, Routes } from "react-router-dom";
 import IsCliente from "./modules/IsCliente";
-import Menu from "./modules/Menu";
+import Login from "./modules/Login";
 import Servicios from "./modules/Servicios";
 import Ticket from "./modules/Ticket";
 
 function App() {
   const [servicios, setservicios] = useState([])
   const [ticket, setticket] = useState({})
+  const [sucursal, setsucursal] = useState('9999-GISNET')
   return (
     <>
-    <Menu/>
+    
     <Router>
       <Routes>
-        <Route path="/" element={<IsCliente setservicios={setservicios}/>}/>
+        <Route path="/" element={<Login setsucursal={setsucursal}/>}/>
+        <Route path="/app" element={<IsCliente setservicios={setservicios}/>}/>
         <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket}/>}/>
-        <Route path="/ticket" element={<Ticket ticket={ticket}/>} />
+        <Route path="/ticket" element={<Ticket ticket={ticket} sucursal={sucursal}/>} />
       </Routes>
     </Router>
     </>

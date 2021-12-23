@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import Menu from "./Menu";
+
 
 const Servicios = ({setticket,servicios}) => {
     const [red, setred] = useState(false)
@@ -19,7 +21,9 @@ const Servicios = ({setticket,servicios}) => {
            setred(true)
     }
     return (
-        !red?
+        <>
+        <Menu/>
+        {!red?
         <div class="d-flex justify-content-center align-items-center flex-column h-100 ">
             {servicios.length > 0 ?
                 servicios.map((servicio)=>{
@@ -31,7 +35,8 @@ const Servicios = ({setticket,servicios}) => {
             }
      
         </div>:
-        <Navigate to={"/ticket"}/>
+        <Navigate to={"/ticket"}/>}
+        </>
     )
 }
 
