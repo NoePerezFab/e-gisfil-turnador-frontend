@@ -15,8 +15,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login setsucursal={setsucursal}/>}/>
-        <Route path="/app" element={<IsCliente setservicios={setservicios}/>}/>
-        <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket}/>}/>
+        <Route path="/app" element={<IsCliente setservicios={setservicios} sucursal={sucursal}/>}/>
+        <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket} sucursal={sucursal}/>}/>
         <Route path="/ticket" element={<Ticket ticket={ticket} sucursal={sucursal}/>} />
       </Routes>
     </Router>
