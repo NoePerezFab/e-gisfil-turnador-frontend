@@ -6,7 +6,6 @@ const IsCliente = ({setservicios,sucursal}) => {
         const intervalRef = useRef() 
         const [red, setred] = useState(false)
         const [fecha, setfecha] = useState(null)
-        
         const getServicios = (isCliente) =>{
             const serviciosSucursal = sucursal.servicios
             const serviciosCliente = serviciosSucursal.filter(({servicio_cliente})=> servicio_cliente === isCliente)
@@ -33,7 +32,7 @@ const IsCliente = ({setservicios,sucursal}) => {
             } 
             intervalRef.current = setInterval(getFecha,1000)
             
-        }, [fecha])
+        }, [])
        
     return (
         <>

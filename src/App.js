@@ -4,6 +4,7 @@ import IsCliente from "./modules/IsCliente";
 import Login from "./modules/Login";
 import Servicios from "./modules/Servicios";
 import Ticket from "./modules/Ticket";
+import TomarTicket from "./modules/TomarTicket";
 
 function App() {
   const [servicios, setservicios] = useState([])
@@ -18,6 +19,7 @@ function App() {
         <Route path="/app" element={<IsCliente setservicios={setservicios} sucursal={sucursal}/>}/>
         <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket} sucursal={sucursal}/>}/>
         <Route path="/ticket" element={<Ticket ticket={ticket} sucursal={sucursal}/>} />
+        <Route path="/tomarticket" element={<TomarTicket/>}/>
       </Routes>
     </Router>
     </>

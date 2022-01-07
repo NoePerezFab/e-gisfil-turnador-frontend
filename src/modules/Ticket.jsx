@@ -34,7 +34,7 @@ const Ticket = ({ticket,sucursal}) => {
             <h6>{datetime}</h6>
             </div>
         </div>:
-        <Navigate to="/app"/>
+        <Navigate to="/tomarticket"/>
     )
 }
 
