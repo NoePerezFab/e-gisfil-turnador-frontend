@@ -4,13 +4,17 @@ import Menu from "./Menu";
 
 const IsCliente = ({setservicios,sucursal}) => {
         const intervalRef = useRef() 
-        const [red, setred] = useState(false)
+        const [red, setred] = useState(0)
         const [fecha, setfecha] = useState(null)
         const getServicios = (isCliente) =>{
             const serviciosSucursal = sucursal.servicios
             const serviciosCliente = serviciosSucursal.filter(({servicio_cliente})=> servicio_cliente === isCliente)
             setservicios(serviciosCliente)
-            setred(true)
+            if(isCliente){
+                setred(2)
+            }else{
+                setred(1)
+            }
         }
         const convertNumber = (n)=>{
            if(n < 10){
@@ -43,15 +47,15 @@ const IsCliente = ({setservicios,sucursal}) => {
         {fecha !== null ? <h4 className="text-center">{fecha.dia}/{fecha.mes}/{fecha.anio}    {fecha.hora}:{fecha.minutos}:{fecha.segundos}</h4>
         : <></>}
         
-        {!red ?
+        {red === 0 ?
         <div class="d-flex justify-content-center align-items-center flex-column mt-5 ">
             
                 <button type="button" onClick={()=>getServicios(true)} className="btn  btn-lg btn-block p-5 m-5 w-50 " style={{background:"#0D7E61",color:"white",fontSize:"3rem"}}>Soy Cliente</button>
             
                 <button type="button" onClick={()=>getServicios(false)}className="btn  btn-lg btn-block p-5 m-5 w-50" style={{background:"#0D7E61",color:"white",fontSize:"3rem"}}>No soy Cliente</button>
         </div>:
-
-        <Navigate to={ "/servicios"}/>}
+        red === 1 ?
+        <Navigate to={ "/servicios"}/> : <Navigate to={"/numcliente"}/>}
         </>
         
     )

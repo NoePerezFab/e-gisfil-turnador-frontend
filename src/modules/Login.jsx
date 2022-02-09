@@ -10,7 +10,7 @@ const Login = ({setsucursal}) => {
         const request = {"id" : sucursalSeleccionada}
         const requestJson = JSON.stringify(request)
         
-        const response = await fetch('http://192.168.200.216:8080/ticket/api/getsucursal',{ 
+        const response = await fetch('../ticket/api/getsucursal',{ 
                 headers : { 'Content-Type': 'application/json' },
                 method: 'POST',
                 mode: 'cors', // <---
@@ -26,7 +26,7 @@ const Login = ({setsucursal}) => {
     }
     useEffect(() => {
         const getSucursales = async () =>{
-            const response = await fetch('http://192.168.200.216:8080/ticket/api/getsucursales',{ 
+            const response = await fetch('../ticket/api/getsucursales',{ 
                 headers : { 'Content-Type': 'application/json' },
                 method: 'GET',
                 mode: 'cors', // <---

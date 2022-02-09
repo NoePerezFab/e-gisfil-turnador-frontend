@@ -2,6 +2,7 @@ import { useState } from "react";
 import {HashRouter as Router, Route, Routes } from "react-router-dom";
 import IsCliente from "./modules/IsCliente";
 import Login from "./modules/Login";
+import NunCliente from "./modules/NunCliente";
 import Servicios from "./modules/Servicios";
 import Ticket from "./modules/Ticket";
 import TomarTicket from "./modules/TomarTicket";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/servicios" element={<Servicios servicios={servicios} setticket={setticket} ticket={ticket} sucursal={sucursal}/>}/>
         <Route path="/ticket" element={<Ticket ticket={ticket} sucursal={sucursal}/>} />
         <Route path="/tomarticket" element={<TomarTicket/>}/>
+        <Route path="/numcliente" element={<NunCliente/>}/>
       </Routes>
     </Router>
     </>

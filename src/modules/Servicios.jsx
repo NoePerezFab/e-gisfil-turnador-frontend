@@ -5,12 +5,12 @@ import Menu from "./Menu";
 
 const Servicios = ({setticket,servicios,sucursal}) => {
     const [red, setred] = useState(1)
-    
+
     const getTurno = async(servicio) =>{
         const ticketrequest = {"servicio" : servicio,"id_sucursal" : sucursal.id}
         const servicioJson = JSON.stringify(ticketrequest)
         
-        const response = await fetch('http://192.168.200.216:8080/ticket/api/addticket',{ 
+        const response = await fetch('../ticket/api/addticket',{ 
                 headers : { 'Content-Type': 'application/json' },
                 method: 'POST',
                 mode: 'cors', // <---
@@ -21,6 +21,7 @@ const Servicios = ({setticket,servicios,sucursal}) => {
             setticket(responseJson)
            setred(2)
     }
+    
     const regresar = () =>{
         setred(3)
     }
@@ -42,6 +43,7 @@ const Servicios = ({setticket,servicios,sucursal}) => {
         </div>: red === 2?
         <Navigate to={"/ticket"}/> :
         <Navigate to={"/app"}/>}
+        
         </>
     )
 }
