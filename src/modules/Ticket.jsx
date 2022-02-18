@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const Ticket = ({ticket,sucursal}) => {
+const Ticket = ({ticket,sucursal,cliente}) => {
     const intervalRef = useRef()
     const [datetime, setdatetime] = useState('')
     const [redirect, setredirect] = useState(false)
@@ -26,7 +26,9 @@ const Ticket = ({ticket,sucursal}) => {
             <div class="d-flex justify-content-center align-items-center flex-column   " style={{width:"410px"}}>
             <h3 className='pb-2'>e-GISfil</h3>
             <h3 className='w-100 text-center' style={{background:"#0D529B",color:"#ffffff"}}>GISnet</h3>
-            <h5 className='pt-2'>Bienvenido</h5>
+            {cliente === null ?
+            <h5 className='pt-2'>Bienvenido</h5>:
+            <h5 className='pt-2'>Bienvenido {cliente.nombre}</h5>}
             <h5 className='pb-2'>{sucursal.clave}-{sucursal.nombre}</h5>
             <h1 className='pb-2'>{ticket.turno}</h1>
             <h5 className='text-center pl-5 pr-5'>Favor de esperar turno en la zona de espera</h5>

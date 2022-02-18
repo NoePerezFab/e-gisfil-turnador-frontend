@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import Menu from "./Menu";
 
 
-const Servicios = ({setticket,servicios,sucursal,ncliente}) => {
+const Servicios = ({setticket,servicios,sucursal}) => {
     const [red, setred] = useState(1)
 
-    useEffect(() => {
-      console.log(ncliente);
     
-      return () => {
-        
-      }
-    }, [])
     
     const getTurno = async(servicio) =>{
         const ticketrequest = {"servicio" : servicio,"id_sucursal" : sucursal.id}
