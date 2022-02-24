@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Navigate } from 'react-router'
 import Menu from './Menu'
 import Teclado from './Teclado'
+import TecladoCompleto from './TecladoCompleto'
 
 const NunCliente = ({setncliente}) => {
     const [red, setred] = useState(0)
     const ntarjetaRef = useRef(null)
+    const [tipoTeclado, settipoTeclado] = useState(false)
     //const nclienteRef = useRef(null)
     const [alert, setalert] = useState(false)
     const [numeroaux, setnumeroaux] = useState('')
@@ -66,7 +68,22 @@ const NunCliente = ({setncliente}) => {
             }
         
     }
-    
+    const numeroRef = useRef(null)
+      const inputKey = (e) =>{
+            document.getElementById("code").focus()
+            const aux = numeroRef.current.value
+            numeroRef.current.value = aux + e.target.value
+      }
+      const del = () =>{
+        document.getElementById("code").focus()
+        numeroRef.current.value = numeroRef.current.value.slice(0,-1)
+      }
+      const enviarManual = () =>{
+          enviarIngresoManual(numeroRef.current.value)
+      }
+      const changeTeclado = () =>{
+          settipoTeclado(!tipoTeclado)
+      }
     return (
         red === 0 ?
         <>
@@ -78,8 +95,15 @@ const NunCliente = ({setncliente}) => {
             <form onSubmit={enviar}>
             <input type="text" className='' style={{opacity:"0"}} id="ntarjeta" ref={ntarjetaRef} />
             <div class="form-group">
-            
-                <Teclado enviar={enviarIngresoManual}/>
+                <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
+                    <div class="btn-group d-flex justify-content-center align-items-center">
+                        <input class="text-center form-control-lg mb-2" id="code" ref={numeroRef} />
+                    </div>
+                    {tipoTeclado ? <Teclado  inputKey={inputKey} del={del} enviarManual={enviarManual} changeTeclado={changeTeclado}/> :
+                    <TecladoCompleto inputKey={inputKey} del={del} enviarManual={enviarManual} changeTeclado={changeTeclado}/>}
+                    
+                </div>
+                
                 <button type='submit' style={{opacity:"0"}}></button>
             </div>
             {alert ? <><div class="alert alert-danger" role="alert">

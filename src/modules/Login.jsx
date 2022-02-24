@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import Menu from './Menu'
 
 
+
 const Login = ({setsucursal}) => {
     const [redirect, setredirect] = useState(false)
     const [sucursales, setsucursales] = useState([])
@@ -56,7 +57,7 @@ const Login = ({setsucursal}) => {
 
                     }) : <p></p>}
                 </select>
-                   
+               
                 <button type='submit' className="btn    p-3 mt-3  " style={{background:"#0D7E61",color:"white"}} onClick={getSucursal}>Ingresar</button>
                 
             </div>
