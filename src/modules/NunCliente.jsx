@@ -64,6 +64,7 @@ const NunCliente = ({setncliente}) => {
         setncliente(responseJson)
         setred(2)
             }catch{
+                console.log("Ok");
                 setalert(true)
             }
         
@@ -106,9 +107,9 @@ const NunCliente = ({setncliente}) => {
                 
                 <button type='submit' style={{opacity:"0"}}></button>
             </div>
-            {alert ? <><div class="alert alert-danger" role="alert">
-                   {numeroaux}
-                </div></> : <></>}
+            {alert ? <div class="alert alert-danger" role="alert">
+                   No existe el numero de tarjeta o cliente
+                </div>: <></>}
 
             </form>
             </div>
